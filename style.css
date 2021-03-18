@@ -65,6 +65,7 @@ main {
 	align-items: center;
 	color: black;
 	position: relative;
+	background: black;
 }
 .scroll-btn {
 	display: table;
@@ -195,6 +196,7 @@ main {
 	padding-right: 5rem;
 	position: relative;
 	color: white;
+	background: black;
 }
 .kamila-img {
 	position: relative;
@@ -253,6 +255,7 @@ main {
 	padding-right: 5rem;
 	position: relative;
 	color: white;
+	background: black;
 }
 .camera-desc h2 {
 	font-size: 3rem;
@@ -283,6 +286,7 @@ main {
 	padding-right: 5rem;
 	position: relative;
 	color: white;
+	background: black;
 }
 .films-img {
 	position: relative;
