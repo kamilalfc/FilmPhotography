@@ -267,10 +267,13 @@ body.hide {
 	}
 }
 @media screen and (max-width: 760px) {
-
 	.photo-cell img {
 		filter: none;
-		pointer-events: none;
 		height: 60vh;
+	}
+}
+@media screen and (max-width: 360px) {
+	.photo-cell img {
+		pointer-events: none;
 	}
 }
