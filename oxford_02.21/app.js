@@ -58,7 +58,7 @@ previews.forEach((preview) => {
 		original.classList.add("open");
 
 		const originalSrc = preview.getAttribute("data-original");
-		original.src = `../img/london_02.21/${originalSrc}`;
+		original.src = `../img/oxford/${originalSrc}`;
 	});
 });
 modal.addEventListener("click", (e) => {
