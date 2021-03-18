@@ -80,11 +80,23 @@ body {
 	font-size: 3rem;
 	padding: 2rem 0rem;
 	color: rgb(255, 139, 93);
+	opacity: 0;
 }
 .contact p {
 	font-size: 1.5rem;
 	line-height: 2rem;
 	color: rgb(255, 139, 93);
+}
+.contact-insta,
+.contact-twitter {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	text-align: center;
+}
+.contact-insta a {
+	color: white;
+	text-decoration: none;
 }
 .scrollmagic-pin-spacer {
 	position: static !important;
@@ -253,17 +265,26 @@ body.hide {
 		display: block;
 	}
 	.nav-links {
-		font-size: 2rem;
+		padding-top: 4rem;
+		font-size: 1rem;
 		text-align: center;
 	}
 	.contact h2 {
-		font-size: 3rem;
+		padding-bottom: 0;
+		font-size: 2rem;
 		text-align: center;
 	}
 	.contact p {
-		font-size: 1.2rem;
-		padding: 2rem;
+		line-height: 0.5rem;
+		font-size: 0.6rem;
+		padding: 1rem;
 		text-align: center;
+	}
+	.arrow-btn .fa-arrow-left {
+		font-size: 1.5rem;
+	}
+	.arrow-btn .fa-arrow-right {
+		font-size: 1.5rem;
 	}
 }
 @media screen and (max-width: 760px) {
