@@ -77,16 +77,16 @@ body {
 	flex-basis: 30rem;
 }
 .contact h2 {
-	font-size: 3rem;
+	font-size: 4rem;
 	padding: 2rem 0rem;
 	color: rgb(255, 139, 93);
-	opacity: 0;
 }
 .contact p {
 	font-size: 1.5rem;
 	line-height: 2rem;
 	color: rgb(255, 139, 93);
 }
+
 .contact-insta,
 .contact-twitter {
 	display: flex;
