@@ -6,25 +6,45 @@ function animateSlides() {
 	controller = new ScrollMagic.Controller();
 	const sliders = document.querySelectorAll(".slide");
 	const nav = document.querySelector(".nav-header");
+
 	sliders.forEach((slide, index, slides) => {
-		const revealText = slide.querySelector(".reveal-text");
-		const img = slide.querySelectorAll(".photo-cell");
+		const revealImg = slide.querySelector(".reveal-img");
+		const img = slide.querySelector("img");
+		const text = slide.querySelector(".intro-text");
 		const desc = slide.querySelectorAll("p,h2");
 
 		const slideTl = gsap.timeline({
 			defaults: { duration: 1, ease: "power2.inOut" },
 		});
-		slideTl.fromTo(revealText, { x: "0%" }, { x: "100%" });
-		slideTl.fromTo(img, { scale: 0.7 }, { scale: 1 }, "-=1");
-		slideTl.fromTo(desc, { opacity: 0 }, { opacity: 1 }, "-=1");
 
+		slideTl.fromTo(revealImg, { x: "0%" }, { x: "100%" });
+		slideTl.fromTo(img, { scale: 2 }, { scale: 1 }, "-=1");
+		slideTl.fromTo(text, { opacity: 0 }, { opacity: 1 }, "-=0.4");
 		slideTl.fromTo(nav, { y: "-100%" }, { y: "0%" }, "-=0.5");
+		slideTl.fromTo(desc, { opacity: 0 }, { opacity: 1 }, "-=1");
 
 		slideScene = new ScrollMagic.Scene({
 			triggerElement: slide,
 			triggerHook: 0.25,
 			reverse: false,
-		});
+		})
+			.setTween(slideTl)
+			// .addIndicators({ name: "slide" })
+			.addTo(controller);
+		const pageTl = gsap.timeline();
+		let nextSlide = slide.length - 1 === index ? "end" : slides[index + 1];
+		pageTl.fromTo(nextSlide, { y: "0%" }, { y: "50%" });
+		pageTl.fromTo(slide, { opacity: 1, scale: 1 }, { opacity: 0, scale: 0.5 });
+		pageTl.fromTo(nextSlide, { y: "50%" }, { y: "0%" }, "-=0.5");
+		pageScene = new ScrollMagic.Scene({
+			triggerElement: slide,
+			duration: "100%",
+			triggerHook: 0,
+		})
+			// .addIndicators({ name: "page", indent: 200 })
+			.setPin(slide, { pushFollowers: false })
+			.setTween(pageTl)
+			.addTo(controller);
 	});
 }
 
@@ -48,26 +68,5 @@ function navToggle(e) {
 	}
 }
 
-const modal = document.querySelector(".modal");
-const previews = document.querySelectorAll(".main-gallery img");
-const original = document.querySelector(".full-img");
-
-previews.forEach((preview) => {
-	preview.addEventListener("click", () => {
-		modal.classList.add("open");
-		original.classList.add("open");
-
-		const originalSrc = preview.getAttribute("data-original");
-		original.src = `../img/oxford/${originalSrc}`;
-	});
-});
-modal.addEventListener("click", (e) => {
-	if (e.target.classList.contains("modal")) {
-		modal.classList.remove("open");
-		original.classList.remove("open");
-	}
-});
-
 burger.addEventListener("click", navToggle);
-
 animateSlides();
